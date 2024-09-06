@@ -1,29 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { store, useStore } from "../store"
+import { computed, onMounted } from 'vue';
 
-const scheduled = ref([
-  {
-    contaDestino: "1234567890",
-    valorFinal: "R$ 1.200,00",
-    taxaAplicada: "R$ 15,00",
-    dataDeTransferencia: "2024-09-10",
-    dataDeAgendamento: "2024-09-01",
-  },
-  {
-    contaDestino: "9876543210",
-    valorFinal: "R$ 3.000,00",
-    taxaAplicada: "R$ 30,00",
-    dataDeTransferencia: "2024-09-12",
-    dataDeAgendamento: "2024-09-02",
-  },
-  {
-    contaDestino: "1122334455",
-    valorFinal: "R$ 850,00",
-    taxaAplicada: "R$ 10,00",
-    dataDeTransferencia: "2024-09-15",
-    dataDeAgendamento: "2024-09-03",
-  },
-]);
+const store = useStore();
+
+const data = computed(() => store.state.schedules);
+
+onMounted(() => {
+  store.dispatch('listSchedules');
+});
 </script>
 
 <template>
@@ -40,7 +26,7 @@ const scheduled = ref([
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in scheduled" :key="index">
+        <tr v-for="(item, index) in data" :key="index">
           <td>{{ item.contaDestino }}</td>
           <td>{{ item.valorFinal }}</td>
           <td>{{ item.taxaAplicada }}</td>
