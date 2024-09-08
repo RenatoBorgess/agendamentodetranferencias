@@ -1,13 +1,17 @@
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import  axios  from 'axios'
 import httpClient from '../http/index'
+import  axios  from 'axios'
+import httpClient from '../http/index'
 export const key = Symbol();
+
 
 
 export const store = createStore({
   state: {
     schedules: [],
   },
+
 
 
   mutations: {
