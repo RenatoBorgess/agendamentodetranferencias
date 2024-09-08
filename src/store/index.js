@@ -1,7 +1,10 @@
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import  axios  from 'axios'
 import httpClient from '../http/index'
+import  axios  from 'axios'
+import httpClient from '../http/index'
 export const key = Symbol();
+
 
 
 export const store = createStore({
@@ -10,7 +13,9 @@ export const store = createStore({
   },
 
 
+
   mutations: {
+    listTransfers(state, data) {
     listTransfers(state, data) {
       state.schedules = data;
       console.log(data);
