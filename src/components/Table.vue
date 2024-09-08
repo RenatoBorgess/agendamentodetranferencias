@@ -27,11 +27,11 @@ onMounted(() => {
       </thead>
       <tbody>
         <tr v-for="(item, index) in data" :key="index">
-          <td>{{ item.contaDestino }}</td>
-          <td>{{ item.valorFinal }}</td>
-          <td>{{ item.taxaAplicada }}</td>
-          <td>{{ item.dataDeTransferencia }}</td>
-          <td>{{ item.dataDeAgendamento }}</td>
+          <td>{{ item.originAccount }}</td>
+          <td>{{ item.amount }}</td>
+          <td>{{ item.fee }}</td>
+          <td>{{ item.dateOfTransfer }}</td>
+          <td>{{ item.dateOfSchedule }}</td>
           <td>
             <button class="btn btn-primary btn-background">Cancelar</button>
           </td>
