@@ -16,6 +16,7 @@ export const store = createStore({
 
   mutations: {
     listTransfers(state, data) {
+    listTransfers(state, data) {
       state.schedules = data;
       console.log(data);
     },
