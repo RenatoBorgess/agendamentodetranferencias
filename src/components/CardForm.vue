@@ -2,15 +2,38 @@
 import { defineEmits, defineProps } from 'vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { reactive } from 'vue';
+import { useStore} from '../store';
+
+const store = useStore();
 
 const emit = defineEmits(['close']);
+
 const props = defineProps({
   showModal: Boolean,
 });
 
+const formData = reactive({
+  origemAccount: '',
+  targetAccount: '',
+  amount: '',
+  dateOfTransfer: '',
+  dateOfSchedule: new Date().toISOString().split('T')[0],
+});
+
 function onSchedule() {
+  const payload = {
+    originAccount: formData.origemAccount,
+    targetAccount: formData.targetAccount,
+    amount: parseFloat(formData.amount),
+    dateOfTransfer: formData.dateOfTransfer,
+    dateOfSchedule: formData.dateOfSchedule,
+  };
+
+  store.dispatch('schedule', payload)
   emit('close');
 }
+
 </script>
 
 <template>
@@ -25,19 +48,19 @@ function onSchedule() {
           <form>
             <div class="mb-3">
               <label for="origem" class="form-label">Conta Origem</label>
-              <input type="text" class="form-control" id="origem">
+              <input v-model = "formData.origemAccount" type="text" class="form-control" id="origem">
             </div>
             <div class="mb-3">
               <label for="destino" class="form-label">Conta Destino</label>
-              <input type="text" class="form-control" id="destino">
+              <input v-model = "formData.targetAccount" type="text" class="form-control" id="destino">
             </div>
             <div class="mb-3">
               <label for="valor" class="form-label">Valor</label>
-              <input type="number" class="form-control" id="valor">
+              <input v-model = "formData.amount" type="number" class="form-control" id="valor">
             </div>
             <div class="mb-3">
               <label for="data" class="form-label">Data</label>
-              <input type="date" class="form-control" id="data">
+              <input v-model = "formData.dateOfTransfer" type="date" class="form-control" id="data">
             </div>
           </form>
         </div>
