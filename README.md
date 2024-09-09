@@ -1,5 +1,20 @@
-# Vue 3 + Vite
+# Teste Agendamento de Transferencias Financeiras
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Este projeto apresenta um componente principal com uma tabela dos agendamentos recentes. Essa tabela sera inicializada vazia pois os dados que ela consome vem do Banco de Dados h2, que e reinicializado cada vez que o projeto do backend e inicializado. 
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Este componente usa uma store (vuex) para gerenciar o estado do componente e essa store disponibiliza os dados potencialmente para todos os componentes. 
+
+O agendamento acontece no modal que e mostrado ao clicar no botao agendar. Atraves dele controe-se o objeto payload que sera processado pelo servico scheduling.
+
+Para rodar o projeto e necessario modificar o env.example para conter a URL do servico scheduling. http://localhost:8080/api
+
+Instale as dependencias com o comando:
+
+``` 
+npm install
+``` 
+Inicie o servidor com o comando:
+
+```
+npm run dev
+```
