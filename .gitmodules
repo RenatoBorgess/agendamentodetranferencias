@@ -1,0 +1,3 @@
+[submodule "api-spring"]
+	path = api-spring
+	url = https://github.com/RenatoBorgess/scheduling
